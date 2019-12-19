@@ -3,9 +3,7 @@ import requests
 import json
 import sys
 
-# CLOUD_URL = 'http://127.0.0.1:5000/'
-CLOUD_URL = 'https://ec2-18-222-228-160.us-east-2.compute.amazonaws.com/'
-PROV_URL = 'http://127.0.0.1:5000/'
+PROV_URL = 'http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/'
 
 class Cliente:
     def __init__(self):

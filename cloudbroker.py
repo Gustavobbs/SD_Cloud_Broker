@@ -6,10 +6,9 @@ import json
 import bson
 
 app = Flask(__name__)
-app.config['MONGO_URI'] = "mongodb://admin:sd1234@ds159184.mlab.com:59184/sd"
+app.config['MONGO_URI'] = "mongodb+srv://broker:<password>@cluster0-rlw1m.mongodb.net/test?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
-PROV_URL = 'http://127.0.0.1:5001/'
 @app.route('/')
 def main():
     return 'Welcome to SD'
@@ -92,4 +91,4 @@ def liberar_vm():
     return jsonify({'Ok': True})
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
