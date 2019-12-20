@@ -6,7 +6,7 @@ import json
 import bson
 
 app = Flask(__name__)
-app.config['MONGO_URI'] = "mongodb+srv://broker:<password>@cluster0-rlw1m.mongodb.net/test?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = "mongodb+srv://broker:12345@cluster0-rlw1m.mongodb.net/test?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 @app.route('/')
