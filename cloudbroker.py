@@ -24,7 +24,7 @@ def init_provedor(pid):
             'hd': data['hd'],
             'preco':data['preco'],  
             'usando': 'False',
-            'reserva': '0'
+            'reserva': '-1'
         })
 
     return jsonify({'Ok': True})
@@ -49,7 +49,7 @@ def search_vm():
             'hd': {'$gte': data['hd']},
             'usando': 'False'
         }
-    )
+    ).sort([("preco":, 1)]).limit(1)
     
     return bson.json_util.dumps(busca)
 
@@ -82,10 +82,9 @@ def liberar_vm():
     data = request.get_json()
     mongo.db['vm'].update_one(
         {
-            'vcpu':data['vcpu'],
-            'ram':data['ram'],
-            'hd':data['hd'],
-        }, {'$set': {'usando':'False', 'reserva':'0'}}
+            'reserva': pid,
+            'usando': 'True'
+        }, {'$set': {'usando':'False', 'reserva':'-1'}}
     )
 
     return jsonify({'Ok': True})

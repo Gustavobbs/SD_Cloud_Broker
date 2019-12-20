@@ -1,0 +1,69 @@
+Cadastrar:
+
+    modelo:
+    curl --header "Content-Type: application/json"   --request POST   --data '{"vcpu":0,"hd":0,"ram":0,"preco":0}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/provedor/cadastrar/<pid>
+
+    exemplo:
+    curl --header "Content-Type: application/json"   --request POST   --data '{"vcpu":6,"hd":2000896,"ram":4,"preco":800}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/provedor/cadastrar/80
+
+
+Procurar pelo id:
+
+    modelo:
+    curl --header "Content-Type: application/json"   --request POST   --data '{}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/provedor/search/<pid>
+
+    exemplo:
+    curl --header "Content-Type: application/json"   --request POST   --data '{}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/provedor/search/02
+
+    curl --header "Content-Type: application/json"   --request POST   --data '{}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/provedor/search/06
+
+
+Procurar menor valor:
+
+    modelo:
+    curl --header "Content-Type: application/json"   --request POST   --data '{"vcpu":0,"hd":0,"ram":0}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/search
+
+    exemplo:
+    curl --header "Content-Type: application/json"   --request POST   --data '{"vcpu":2,"hd":100,"ram":1}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/search
+    curl --header "Content-Type: application/json"   --request POST   --data '{"vcpu":5,"hd":1000,"ram":20}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/search
+    curl --header "Content-Type: application/json"   --request POST   --data '{"vcpu":10,"hd":23000,"ram":6}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/search
+
+
+Reservar:
+
+    modelo:
+    curl --header "Content-Type: application/json"   --request POST   --data '{"vcpu":0,"hd":0,"ram":0}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/cliente/reservar/<pid>
+
+    exemplo: obs:(usar MESMOS valores dos recursos da vm com o <pid> requisitado)
+    curl --header "Content-Type: application/json"   --request POST   --data '{"vcpu":16,"hd":1024,"ram":8}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/cliente/reservar/01
+    curl --header "Content-Type: application/json"   --request POST   --data '{"vcpu":128,"hd":1000000,"ram":64}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/cliente/reservar/03
+    curl --header "Content-Type: application/json"   --request POST   --data '{"vcpu":16,"hd":200,"ram":16}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/cliente/reservar/06
+
+
+Consultar: (semelhande ao "Procurar pelo id" com a diferenca que obtem apenas os em uso)
+
+    modelo:
+    curl --header "Content-Type: application/json"   --request POST   --data '{}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/cliente/consultar/<pid>
+
+    exemplo:
+    curl --header "Content-Type: application/json"   --request POST   --data '{}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/cliente/consultar/01
+
+
+Liberar:
+
+    modelo:
+    curl --header "Content-Type: application/json"   --request POST   --data '{}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/cliente/liberar/<pid>
+
+    exemplo:
+    curl --header "Content-Type: application/json"   --request POST   --data '{}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/cliente/liberar/01
+    curl --header "Content-Type: application/json"   --request POST   --data '{}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/cliente/liberar/03
+    curl --header "Content-Type: application/json"   --request POST   --data '{}'   http://ec2-18-188-83-224.us-east-2.compute.amazonaws.com:5000/cliente/liberar/06
+
+
+
+
+
+Itens a melhorar:
+
+* Interface
+* Tratamento de erros
